@@ -6,12 +6,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import lombok.RequiredArgsConstructor;
-import store.novabook.front.common.util.KeyManagerUtil;
 import store.novabook.front.common.util.dto.NaverSearchDto;
 
 @Service
 @RequiredArgsConstructor
-public class BookSearchService implements InitializingBean {
+public class BookSearchService {
 
 	private final NaverBookSearchApiClient naverBookSearchApiClient;
 	private final Environment environment;
@@ -22,9 +21,4 @@ public class BookSearchService implements InitializingBean {
 		return naverBookSearchApiClient.getSearch(naverSearchDto.clientkey(), naverSearchDto.secretkey(), query, 5, 1);
 	}
 
-	@Override
-	public void afterPropertiesSet() {
-		RestTemplate restTemplate = new RestTemplate();
-		this.naverSearchDto = KeyManagerUtil.getNaverConfig(environment, restTemplate);
-	}
 }

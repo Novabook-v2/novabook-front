@@ -34,7 +34,6 @@ import store.novabook.front.common.exception.ErrorCode;
 import store.novabook.front.common.exception.PaycoApiException;
 import store.novabook.front.common.exception.UnauthorizedException;
 import store.novabook.front.common.response.ApiResponse;
-import store.novabook.front.common.util.KeyManagerUtil;
 import store.novabook.front.common.util.LoginCookieUtil;
 import store.novabook.front.common.util.dto.Oauth2Dto;
 
@@ -57,7 +56,6 @@ public class PaycoOAuth2Controller implements InitializingBean {
 	@Override
 	public void afterPropertiesSet() {
 		RestTemplate restTemplate = new RestTemplate();
-		this.oauth2Dto = KeyManagerUtil.getOauth2Config(environment, restTemplate);
 	}
 
 	@GetMapping
