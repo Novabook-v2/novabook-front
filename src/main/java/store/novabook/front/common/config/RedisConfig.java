@@ -1,5 +1,6 @@
 package store.novabook.front.common.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -25,13 +26,20 @@ import store.novabook.front.redis.listener.RedisMessageSubscriber;
 public class RedisConfig {
 	private final Environment environment;
 
+	@Value("${redis-port}")
+	private Integer redisPort;
+
+	@Value("${redis-host}")
+	private String redisHost;
+
+	@Value("${redis-password}")
+	private String redisPassword;
 	@Bean
 	public RedisConnectionFactory redisConnectionFactory() {
 		RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-		redisStandaloneConfiguration.setHostName("localhost");
-		redisStandaloneConfiguration.setPort(6379);
-		redisStandaloneConfiguration.setPassword("default");
-		// redisStandaloneConfiguration.setDatabase(redisConfig.database());
+		redisStandaloneConfiguration.setHostName(redisHost);
+		redisStandaloneConfiguration.setPort(redisPort);
+		redisStandaloneConfiguration.setPassword(redisPassword);
 		return new LettuceConnectionFactory(redisStandaloneConfiguration);
 	}
 

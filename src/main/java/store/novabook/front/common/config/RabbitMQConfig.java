@@ -21,10 +21,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.web.client.RestTemplate;
 
 import lombok.RequiredArgsConstructor;
-import store.novabook.front.common.util.dto.RabbitMQConfigDto;
 
 /**
  * RabbitMQ 설정 클래스.
@@ -34,6 +32,18 @@ import store.novabook.front.common.util.dto.RabbitMQConfigDto;
 @Configuration
 @RequiredArgsConstructor
 public class RabbitMQConfig {
+
+	@Value("${rabbitmq-host}")
+	String rabbitmqHost;
+
+	@Value("${rabbitmq-username}")
+	String rabbitmqUserName;
+
+	@Value("${rabbitmq-password}")
+	String rabbitmqPassword;
+
+	@Value("${rabbitmq-port}")
+	Integer rabbitmqPort;
 
 	@Value("${rabbitmq.queue.couponCreateNormal}")
 	private String couponCreateNormalQueue;
@@ -72,10 +82,10 @@ public class RabbitMQConfig {
 
 	@Bean
 	public ConnectionFactory connectionFactory() {
-		CachingConnectionFactory connectionFactory = new CachingConnectionFactory("localhost");
-		connectionFactory.setPort(15672);
-		connectionFactory.setUsername("guest");
-		connectionFactory.setPassword("guest");
+		CachingConnectionFactory connectionFactory = new CachingConnectionFactory(rabbitmqHost);
+		connectionFactory.setPort(rabbitmqPort);
+		connectionFactory.setUsername(rabbitmqUserName);
+		connectionFactory.setPassword(rabbitmqPassword);
 		return connectionFactory;
 	}
 
