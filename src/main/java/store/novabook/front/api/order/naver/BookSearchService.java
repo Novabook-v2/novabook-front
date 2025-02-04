@@ -13,12 +13,8 @@ import store.novabook.front.common.util.dto.NaverSearchDto;
 public class BookSearchService {
 
 	private final NaverBookSearchApiClient naverBookSearchApiClient;
-	private final Environment environment;
-
-	private NaverSearchDto naverSearchDto;
-
 	public String searchBooks(String query) {
-		return naverBookSearchApiClient.getSearch(naverSearchDto.clientkey(), naverSearchDto.secretkey(), query, 5, 1);
+		return naverBookSearchApiClient.getSearch("aY3htNCRURon01pEVu8z", "", query, 5, 1);
 	}
 
 }
