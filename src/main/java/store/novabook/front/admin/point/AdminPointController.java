@@ -17,10 +17,11 @@ import store.novabook.front.api.point.service.PointPolicyService;
 @RequiredArgsConstructor
 public class AdminPointController {
 	private final PointPolicyService pointPolicyService;
+	public static final String PAGE = "0";
 	private static final String PAGE_SIZE = "10";
 
 	@GetMapping("/form")
-	public String getPointForm(@RequestParam(defaultValue = "0") int page,
+	public String getPointForm(@RequestParam(defaultValue = PAGE) int page,
 		@RequestParam(defaultValue = PAGE_SIZE) int size, Model model) {
 		model.addAttribute("pointPolicies", pointPolicyService.getPointPolicyAllPage(page,
 			size));

@@ -1,3 +1,13 @@
+##local RabbitMq 개발용
+rabbitmq-host: "localhost"
+rabbitmq-username: "guest"
+rabbitmq-password: "guest"
+rabbitmq-port: 5672
+##local Redis 개발용
+redis-host: "localhost"
+redis-port: 6379
+redis-password: "default"
+
 management:
   endpoints:
     web:
@@ -13,11 +23,3 @@ logging:
     org.hibernate.type: trace
     io.micrometer: debug
 
-rabbitmq-host: "localhost"
-rabbitmq-username: "guest"
-rabbitmq-password: "guest"
-rabbitmq-port: 5672
-
-redis-host: "localhost"
-redis-port: 6379
-redis-password: "default"

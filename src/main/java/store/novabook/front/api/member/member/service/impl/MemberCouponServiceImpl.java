@@ -31,14 +31,22 @@ public class MemberCouponServiceImpl implements MemberCouponService {
 
 	@Override
 	public Page<GetCouponHistoryResponse> getMyCouponHistoryAll(Pageable pageable) {
-		return memberCouponClient.getMemberCouponHistoryByMemberId(pageable.getPageNumber(), pageable.getPageSize())
-			.toPage();
+		int pageSize = Math.max(1, pageable.getPageSize()); // 최소 1 보장
+		Page<GetCouponHistoryResponse> response = memberCouponClient.getMemberCouponHistoryByMemberId(
+			pageable.getPageNumber(), pageSize
+		).toPage();
+
+		return response != null && response.hasContent() ? response : Page.empty();
 	}
 
 	@Override
 	public Page<GetUsedCouponHistoryResponse> getMyUsedCouponHistory(Pageable pageable) {
-		return memberCouponClient.getMemberUsedCouponHistoryByMemberId(pageable.getPageNumber(), pageable.getPageSize())
-			.toPage();
+		int pageSize = Math.max(1, pageable.getPageSize()); // 최소 1 보장
+		Page<GetUsedCouponHistoryResponse> response = memberCouponClient.getMemberUsedCouponHistoryByMemberId(
+			pageable.getPageNumber(), pageSize
+		).toPage();
+
+		return response != null && response.hasContent() ? response : Page.empty();
 	}
 
 	@Override

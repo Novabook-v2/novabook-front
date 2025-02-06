@@ -46,7 +46,6 @@ public class CurrentMembersArgumentResolver implements HandlerMethodArgumentReso
 			}
 			return null;
 		}
-
 		Long membersId = getMemberIdFromCookies(request.getCookies());
 		if (membersId == null && required) {
 			throw new UnauthorizedException(ErrorCode.UNAUTHORIZED);

@@ -6,6 +6,7 @@ spring:
     name: novabook_front
   thymeleaf:
     prefix: classpath:/templates/
+
   #기본으로 실행할 프로필
   profiles:
     include: dev
@@ -36,6 +37,7 @@ spring:
           max-attempts: 3
           multiplier: 2.0
 
+### RabbitMq 설정
 rabbitmq:
   queue:
     couponCreateNormal: nova.coupon.create.normal.queue
@@ -58,10 +60,10 @@ management:
       exposure:
         include: health,info
 
-
+### Eureka 등록
 eureka:
   client:
-    register-with-eureka: false
+    register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka

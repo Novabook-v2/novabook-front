@@ -14,7 +14,6 @@ public class BookSearchService {
 
 	private final NaverBookSearchApiClient naverBookSearchApiClient;
 	public String searchBooks(String query) {
-		return naverBookSearchApiClient.getSearch("aY3htNCRURon01pEVu8z", "", query, 5, 1);
+		return naverBookSearchApiClient.getSearch("aY3htNCRURon01pEVu8z", "DWSGBOBel9", query, 5, 1);
 	}
-
 }

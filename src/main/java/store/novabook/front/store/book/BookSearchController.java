@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import store.novabook.front.api.book.dto.response.GetBookSearchResponse;
 import store.novabook.front.api.book.service.BookService;
 import store.novabook.front.common.exception.NovaException;
 import store.novabook.front.common.response.PageResponse;
 
+@Slf4j
 @RequestMapping("/search")
 @Controller
 @RequiredArgsConstructor
@@ -32,6 +34,7 @@ public class BookSearchController {
 			model.addAttribute("bookSearches", bookSearches);
 			model.addAttribute("searchType", KEYWORD);
 			model.addAttribute(KEYWORD, keyword);
+
 		} catch (NovaException e) {
 			return "error/404";
 		}

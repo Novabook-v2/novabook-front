@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
-import io.micrometer.core.instrument.Timer;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
@@ -37,6 +36,8 @@ import store.novabook.front.common.util.LoginCookieUtil;
 @Service
 @RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
+	public static final int DORMANCY = 2;
+	public static final int UNSUBSCRIBE = 3;
 	private final MemberClient memberClient;
 	private final MemberAuthClient memberAuthClient;
 
@@ -82,7 +83,7 @@ public class MemberServiceImpl implements MemberService {
 			loginMembersResponse.getBody().accessToken());
 		ApiResponse<GetMembersStatusResponse> status = memberAuthClient.status(getMembersStatusRequest);
 
-		if (status.getBody().memberStatusId() == 2) {
+		if (status.getBody().memberStatusId() == DORMANCY) {
 			Cookie uuidCookie = new Cookie("UUID", status.getBody().uuid());
 			uuidCookie.setMaxAge(60 * 60 * 3);
 			uuidCookie.setSecure(false);
@@ -90,7 +91,7 @@ public class MemberServiceImpl implements MemberService {
 			uuidCookie.setPath("/");
 			response.addCookie(uuidCookie);
 			return "redirect:/dormant";
-		} else if (status.getBody().memberStatusId() == 3) {
+		} else if (status.getBody().memberStatusId() == UNSUBSCRIBE) {
 			return "redirect:/";
 		}
 
@@ -106,7 +107,6 @@ public class MemberServiceImpl implements MemberService {
 
 			// 재방문 수 증가
 			reVisitCounter.increment();
-
 		} else {
 			throw new ForbiddenException(ErrorCode.FORBIDDEN);
 		}

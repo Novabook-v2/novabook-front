@@ -31,7 +31,7 @@ public class PageResponse<T> {
 		@JsonProperty("totalCount") long totalCount,
 		@JsonProperty("data") List<T> data) {
 		this.pageNum = pageNum;
-		this.pageSize = pageSize;
+		this.pageSize = (pageSize != 0) ? pageSize : 1 ;
 		this.totalCount = totalCount;
 		this.data = data;
 	}
