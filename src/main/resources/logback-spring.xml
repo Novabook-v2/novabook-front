@@ -38,7 +38,7 @@
         <include resource="logs/prod/file-info-appender.xml"/>
         <include resource="logs/prod/file-warn-appender.xml"/>
         <include resource="logs/prod/file-error-appender.xml"/>
-
+        <include resource="console-appender.xml"/>
         <root level="INFO">
 
             <appender-ref ref="HTTP-WARN"/>
@@ -47,6 +47,7 @@
             <appender-ref ref="FILE-INFO"/>
             <appender-ref ref="FILE-WARN"/>
             <appender-ref ref="FILE-ERROR"/>
+            <appender-ref ref="CONSOLE"/>
         </root>
     </springProfile>
 </configuration>

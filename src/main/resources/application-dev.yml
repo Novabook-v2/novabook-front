@@ -1,3 +1,8 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
 ##local RabbitMq 개발용
 rabbitmq-host: "localhost"
 rabbitmq-username: "guest"
@@ -7,19 +12,14 @@ rabbitmq-port: 5672
 redis-host: "localhost"
 redis-port: 6379
 redis-password: "default"
+##Naver 검색 api
+NAVER-SEARCH-ID: aY3htNCRURon01pEVu8z
+NAVER-SEARCH-PASSWORD: secret
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: prometheus,health,info
-  endpoint:
-    prometheus:
-      enabled: true
-
-logging:
-  level:
-    org.hibernate.SQL: debug
-    org.hibernate.type: trace
-    io.micrometer: debug
-
+### Eureka 등록
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
