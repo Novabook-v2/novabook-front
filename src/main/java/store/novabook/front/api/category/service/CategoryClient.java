@@ -15,7 +15,7 @@ import store.novabook.front.api.category.dto.response.GetCategoryListResponse;
 import store.novabook.front.api.category.dto.response.GetCategoryResponse;
 import store.novabook.front.common.response.ApiResponse;
 
-@FeignClient(name = "gateway-service", path = "/api/v1/store/categories", contextId = "categoryClient")
+@FeignClient(name = "gateway-service", url = "http://gateway-service:9777/api/v1/store/categories", contextId = "categoryClient")
 public interface CategoryClient {
 	@PostMapping
 	ApiResponse<CreateCategoryResponse> createCategory(@RequestBody CreateCategoryRequest category);

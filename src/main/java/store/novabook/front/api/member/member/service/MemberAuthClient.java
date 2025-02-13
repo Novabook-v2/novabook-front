@@ -20,7 +20,7 @@ import store.novabook.front.api.member.member.dto.response.LoginMembersResponse;
 import store.novabook.front.common.response.ApiResponse;
 import store.novabook.front.common.security.aop.dto.GetMembersTokenResponse;
 
-@FeignClient(name = "gateway-service", path = "/auth", contextId = "memberAuthClient")
+@FeignClient(name = "gateway-service", url = "http://gateway-service:9777/auth", contextId = "memberAuthClient")
 public interface MemberAuthClient {
 	@PostMapping("/login")
 	ApiResponse<LoginMembersResponse> login(@RequestBody LoginMembersRequest loginMembersRequest);

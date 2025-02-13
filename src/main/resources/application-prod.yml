@@ -3,8 +3,26 @@ spring:
     activate:
       on-profile: prod
 
+  rabbitmq:
+    listener:
+      simple:
+        acknowledge-mode: none
+    ssl:
+      enabled: true
+    virtual-host: /
+    addresses: "amqps://${rabbitmq-username}:${rabbitmq-password}@${rabbitmq-host}:${rabbitmq-port}"
+
+feign:
+  client:
+    config:
+      gateway-service:
+        url: http://gateway-service.novabook.svc.cluster.local:9777
+
+
 ### Eureka 등록
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     register-with-eureka: true
     fetch-registry: true

@@ -15,7 +15,7 @@ import store.novabook.front.api.tag.dto.response.GetTagResponse;
 import store.novabook.front.common.response.ApiResponse;
 import store.novabook.front.common.response.PageResponse;
 
-@FeignClient(name = "gateway-service", path = "/api/v1/store/tags", contextId = "tagClient")
+@FeignClient(name = "gateway-service", url = "http://gateway-service:9777/api/v1/store/tags", contextId = "tagClient")
 public interface TagClient {
 	@PostMapping
 	ApiResponse<CreateTagResponse> createTag(@RequestBody CreateTagRequest createTagRequest);

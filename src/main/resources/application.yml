@@ -6,7 +6,7 @@ spring:
 
   #기본으로 실행할 프로필
   profiles:
-    include: prod
+    active: prod
 
   #메일링 설정
   mail:

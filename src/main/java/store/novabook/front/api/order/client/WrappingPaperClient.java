@@ -16,7 +16,7 @@ import store.novabook.front.api.order.dto.response.GetWrappingPaperResponse;
 import store.novabook.front.common.response.ApiResponse;
 import store.novabook.front.common.response.PageResponse;
 
-@FeignClient(name = "gateway-service", path = "/api/v1/store/orders/wrapping-papers", contextId = "wrappingPaperClient")
+@FeignClient(name = "gateway-service", url = "http://gateway-service:9777/api/v1/store/orders/wrapping-papers", contextId = "wrappingPaperClient")
 public interface WrappingPaperClient {
 
 	@GetMapping

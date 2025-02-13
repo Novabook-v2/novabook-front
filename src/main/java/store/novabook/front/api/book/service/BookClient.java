@@ -17,7 +17,7 @@ import store.novabook.front.api.book.dto.response.GetBookToMainResponseMap;
 import store.novabook.front.common.response.ApiResponse;
 import store.novabook.front.common.response.PageResponse;
 
-@FeignClient(name = "gateway-service", path = "/api/v1/store/books", contextId = "BookClient")
+@FeignClient(name = "gateway-service", url = "http://gateway-service:9777/api/v1/store/books")
 public interface BookClient {
 
 	@GetMapping("/{id}")

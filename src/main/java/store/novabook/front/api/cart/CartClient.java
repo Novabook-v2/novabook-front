@@ -20,7 +20,7 @@ import store.novabook.front.api.cart.dto.response.CreateCartBookResponse;
 import store.novabook.front.api.cart.dto.response.GetBookInfoResponse;
 import store.novabook.front.common.response.ApiResponse;
 
-@FeignClient(name = "gateway-service", path = "/api/v1/store/carts", contextId = "cartClient")
+@FeignClient(name = "gateway-service", url = "http://gateway-service:9777/api/v1/store/carts", contextId = "cartClient")
 public interface CartClient {
 
 	@GetMapping("/member")

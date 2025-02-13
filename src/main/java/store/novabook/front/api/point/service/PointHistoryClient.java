@@ -13,7 +13,7 @@ import store.novabook.front.api.point.dto.response.GetPointHistoryResponse;
 import store.novabook.front.common.response.ApiResponse;
 import store.novabook.front.common.response.PageResponse;
 
-@FeignClient(name = "gateway-service", path = "/api/v1/store/point/histories", contextId = "pointHistoryClient")
+@FeignClient(name = "gateway-service", url = "http://gateway-service:9777/api/v1/store/point/histories", contextId = "pointHistoryClient")
 public interface PointHistoryClient {
 
 	@PostMapping("/member")

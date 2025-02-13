@@ -12,7 +12,7 @@ import store.novabook.front.api.point.dto.response.GetPointPolicyResponse;
 import store.novabook.front.common.response.ApiResponse;
 import store.novabook.front.common.response.PageResponse;
 
-@FeignClient(name = "gateway-service", path = "/api/v1/store/point/policies", contextId = "pointPolicyClient")
+@FeignClient(name = "gateway-service", url = "http://gateway-service:9777/api/v1/store/point/policies", contextId = "pointPolicyClient")
 public interface PointPolicyClient {
 
 	@GetMapping

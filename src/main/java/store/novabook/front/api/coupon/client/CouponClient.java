@@ -32,7 +32,7 @@ import store.novabook.front.common.response.PageResponse;
  * 쿠폰 템플릿의 생성 및 조회를 위한 API 호출을 정의합니다.
  */
 
-@FeignClient(name = "gateway-service", path = "/api/v1/coupon", contextId = "couponClient")
+@FeignClient(name = "gateway-service", url = "http://gateway-service:9777/api/v1/coupon", contextId = "couponClient")
 public interface CouponClient {
 
 	/**

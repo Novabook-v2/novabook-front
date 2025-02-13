@@ -16,7 +16,7 @@ import store.novabook.front.api.member.member.dto.response.CreateMemberCouponRes
 import store.novabook.front.common.response.ApiResponse;
 import store.novabook.front.common.response.PageResponse;
 
-@FeignClient(name = "gateway-service", path = "/api/v1/store/members/coupons", contextId = "memberCouponClient")
+@FeignClient(name = "gateway-service", url = "http://gateway-service:9777/api/v1/store/members/coupons", contextId = "memberCouponClient")
 public interface MemberCouponClient {
 	@GetMapping
 	ApiResponse<GetCouponIdsResponse> getMemberCoupon();

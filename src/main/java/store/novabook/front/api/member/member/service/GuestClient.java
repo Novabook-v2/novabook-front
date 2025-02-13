@@ -8,7 +8,7 @@ import store.novabook.front.common.response.ApiResponse;
 import store.novabook.front.store.order.dto.GetGuestOrderHistoryRequest;
 import store.novabook.front.store.order.dto.GetOrderDetailResponse;
 
-@FeignClient(name = "gateway-service", path = "/api/v1/store/guest", contextId = "guestClient")
+@FeignClient(name = "gateway-service", url = "http://gateway-service:9777/api/v1/store/guest", contextId = "guestClient")
 public interface GuestClient {
 
 	@PostMapping
