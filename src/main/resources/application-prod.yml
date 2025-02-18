@@ -28,3 +28,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://novabook-eureka-service:8761/eureka
+
+## WebClient URL 설정
+GATEWAY-SERVICE-URL: "http://gateway-service:9777/"

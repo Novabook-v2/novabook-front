@@ -23,3 +23,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+
+GATEWAY-SERVICE-URL: "http://localhost:9777/"

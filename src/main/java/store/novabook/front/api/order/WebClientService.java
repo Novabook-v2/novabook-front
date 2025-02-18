@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -25,7 +26,8 @@ import store.novabook.front.common.response.ApiResponse;
 @RequiredArgsConstructor
 public class WebClientService {
 
-	public static final String GATEWAY_SERVICE = "http://localhost:9777/";
+	@Value("${GATEWAY-SERVICE-URL}")
+	public String GATEWAY_SERVICE;
 	private final WebClient webClient;
 
 	public Mono<Set<Long>> fetchCategoryIdsAsync(Set<Long> bookIds) {
